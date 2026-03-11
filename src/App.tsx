@@ -9,7 +9,22 @@ import NewsletterPopout from './components/NewsletterPopout';
 import { CartProvider } from './components/CartContext';
 import CartDrawer from './components/CartDrawer';
 
+import Success from './components/Success';
+
 function App() {
+  const isSuccessPage = window.location.pathname.includes('/success');
+
+  if (isSuccessPage) {
+    return (
+      <CartProvider>
+        <div className="app-wrapper">
+          <Header />
+          <Success />
+        </div>
+      </CartProvider>
+    );
+  }
+
   return (
     <CartProvider>
       <div className="app-wrapper">

@@ -83,7 +83,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
         allowed_countries: ['AU'],
       },
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/?cart_open=true`,
+      cancel_url: `${baseUrl}/`,
     });
 
     res.json({ url: session.url });
