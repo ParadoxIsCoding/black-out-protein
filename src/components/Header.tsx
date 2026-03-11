@@ -30,11 +30,11 @@ const Header: React.FC = () => {
         
         {/* LOGO area */}
         <div className="flex items-center">
-          <img src={logoImg} alt="Blackd Out Protein Logo" style={{ height: '60px', width: 'auto' }} />
+          <img src={logoImg} alt="Blackd Out Protein Logo" style={{ height: 'auto', maxHeight: '50px', width: 'auto' }} />
         </div>
 
         {/* Desktop Nav - Centered */}
-        <nav className="flex items-center gap-8 font-bebas" style={{ fontSize: '1.2rem', letterSpacing: '2px', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
+        <nav className="flex items-center gap-8 font-bebas md-hide" style={{ fontSize: '1.2rem', letterSpacing: '2px', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
           <a href="#" className="hover-yellow" style={{ color: '#fff' }}>HOME</a>
           <a href="#story" className="hover-yellow" style={{ color: '#fff' }}>ABOUT</a>
           <a href="#products" className="hover-yellow" style={{ color: '#fff' }}>SHOP</a>

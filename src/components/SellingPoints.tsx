@@ -13,7 +13,7 @@ const SellingPoints: React.FC = () => {
           We consulted nutritionists and scientists to achieve macros that shatter industry standards.
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', width: '100%' }}>
+        <div className="features-grid md-gap-4" style={{ display: 'grid', gap: '2rem', width: '100%' }}>
           
           {/* Card 1 */}
           <div style={{

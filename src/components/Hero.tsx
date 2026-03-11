@@ -3,14 +3,13 @@ import pouchImg from '../assets/saltedc.png';
 
 const Hero: React.FC = () => {
   return (
-    <section className="bg-grid" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '100px', position: 'relative' }}>
-      <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center', height: '100%' }}>
+    <section className="bg-grid hero-wrapper" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '100px', position: 'relative' }}>
+      <div className="container md-grid-cols-1 md-text-center" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center', height: '100%' }}>
         
         {/* Left Column Text Content */}
-        <div className="flex flex-col items-start animate-fade-in" style={{ paddingBottom: '6rem' }}>
+        <div className="flex flex-col items-start md-text-center animate-fade-in" style={{ paddingBottom: '6rem' }}>
           
-          <h1 className="font-bebas" style={{ 
-            fontSize: '8rem', 
+          <h1 className="font-bebas hero-title" style={{ 
             lineHeight: '0.9', 
             color: '#fff',
             marginBottom: '2rem',
@@ -21,8 +20,7 @@ const Hero: React.FC = () => {
             <span className="text-yellow">TOTAL<br/>RECOVERY.</span>
           </h1>
           
-          <p style={{ 
-            fontSize: '1.2rem', 
+          <p className="hero-subtitle" style={{ 
             color: '#ccc', 
             marginBottom: '3rem', 
             maxWidth: '500px',
@@ -38,16 +36,16 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Bottom Stats Row */}
-          <div className="flex gap-8 items-end" style={{ marginTop: '2rem' }}>
-            <div className="flex flex-col items-start">
+          <div className="flex gap-8 items-end stats-row" style={{ marginTop: '2rem' }}>
+            <div className="flex flex-col items-start md-text-center">
               <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>26g</span>
               <span className="font-bebas text-white" style={{ fontSize: '1rem', letterSpacing: '2px' }}>PROTEIN</span>
             </div>
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-start md-text-center">
               <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>4g</span>
               <span className="font-bebas text-white" style={{ fontSize: '1rem', letterSpacing: '2px' }}>CREATINE</span>
             </div>
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-start md-text-center">
               <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>10B</span>
               <span className="font-bebas text-white" style={{ fontSize: '1rem', letterSpacing: '2px' }}>CFU PROBIOTICS</span>
             </div>
@@ -81,7 +79,7 @@ const Hero: React.FC = () => {
             alignItems: 'center',
             justifyContent: 'center'
           }}>
-             <img src={pouchImg} alt="Salted Caramel Protein Pouch" style={{ width: '400px', height: 'auto', filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.8))' }} />
+             <img src={pouchImg} className="hero-image" alt="Salted Caramel Protein Pouch" style={{ width: '400px', height: 'auto', filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.8))' }} />
           </div>
 
         </div>
