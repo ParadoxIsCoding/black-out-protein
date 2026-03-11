@@ -36,7 +36,7 @@ const Marquee: React.FC = () => {
           fontSize: '2rem',
           color: '#000',
           letterSpacing: '2px',
-          animation: 'scroll-left 25s linear infinite',
+          animation: 'scroll-left 45s linear infinite',
           paddingTop: '6px' // minor adjustment for vertical centering of Bebas
         }}
       >

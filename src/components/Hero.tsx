@@ -1,7 +1,20 @@
-import React from 'react';
-import pouchImg from '../assets/saltedc.png';
+import React, { useState, useEffect } from 'react';
+import sc1Img from '../assets/sc1.png';
+import ss1Img from '../assets/ss1.png';
+import sv1Img from '../assets/sv1.png';
+
+const slideImages = [sc1Img, ss1Img, sv1Img];
 
 const Hero: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slideImages.length);
+    }, 3000); // 3 seconds per slide
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="bg-grid hero-wrapper" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '100px', position: 'relative' }}>
       <div className="container md-grid-cols-1 md-text-center" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center', height: '100%' }}>
@@ -79,7 +92,7 @@ const Hero: React.FC = () => {
             alignItems: 'center',
             justifyContent: 'center'
           }}>
-             <img src={pouchImg} className="hero-image" alt="Salted Caramel Protein Pouch" style={{ width: '400px', height: 'auto', filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.8))' }} />
+             <img src={slideImages[currentSlide]} className="hero-image" alt="Protein Pouch" style={{ width: '400px', height: 'auto', filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.8))', transition: 'opacity 0.5s ease-in-out' }} />
           </div>
 
         </div>

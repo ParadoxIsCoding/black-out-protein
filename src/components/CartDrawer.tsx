@@ -59,7 +59,7 @@ const CartDrawer: React.FC = () => {
               <p className="font-bebas" style={{ fontSize: '1.5rem', letterSpacing: '1px' }}>YOUR CART IS EMPTY.</p>
               <button 
                 onClick={closeCart}
-                className="btn btn-outline" 
+                className="clip-btn clip-btn-yellow" 
                 style={{ marginTop: '2rem', width: '100%', maxWidth: '200px' }}
               >
                 RETURN TO SHOP

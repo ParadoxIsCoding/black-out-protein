@@ -27,7 +27,7 @@ const Header: React.FC = () => {
       padding: '1.5rem 0'
     }}>
       <div className="container flex items-center justify-between">
-        
+
         {/* LOGO area */}
         <div className="flex items-center">
           <img src={logoImg} alt="Blackd Out Protein Logo" style={{ height: 'auto', maxHeight: '50px', width: 'auto' }} />
@@ -39,11 +39,11 @@ const Header: React.FC = () => {
           <a href="#story" className="hover-yellow" style={{ color: '#fff' }}>ABOUT</a>
           <a href="#products" className="hover-yellow" style={{ color: '#fff' }}>SHOP</a>
         </nav>
-        
+
         {/* Right side buttons */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <button className="btn-outline-rect" onClick={openCart}>CART ({cartCount})</button>
-          <button className="clip-btn clip-btn-yellow">BUY NOW</button>
+          <a href="#products" className="clip-btn clip-btn-yellow" style={{ display: 'inline-block', lineHeight: '1' }}>BUY NOW</a>
         </div>
       </div>
     </header>
