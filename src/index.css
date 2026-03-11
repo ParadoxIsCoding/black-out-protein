@@ -1,0 +1,156 @@
+:root {
+  --bg-color: #0d0d0d;
+  --bg-color-light: #1a1a1a;
+  --bg-color-lighter: #222222;
+  --text-color: #ffffff;
+  --text-muted: #999999;
+  --primary-color: #ffd600; /* Vibrant yellow from screenshot */
+  --primary-color-hover: #ffea00;
+  --border-color: #333333;
+  --transition-speed: 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Background Pattern: Plus sign grid similar to screenshot */
+.bg-grid {
+  background-image: radial-gradient(#333 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-color: var(--bg-color);
+}
+
+/* Heavy display font for titles */
+.font-bebas {
+  font-family: 'Bebas Neue', display;
+  letter-spacing: 1px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+/* Clip-path buttons to match the chamfered look from screenshot (angled bottom right or top left) */
+.clip-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-weight: 800;
+  font-family: 'Bebas Neue', display;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  text-align: center;
+  /* Cut bottom-right corner */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+}
+
+.clip-btn-yellow {
+  background-color: var(--primary-color);
+  color: #000;
+}
+
+.clip-btn-yellow:hover {
+  background-color: var(--primary-color-hover);
+  transform: translateY(-2px);
+}
+
+.clip-btn-dark {
+  background-color: #262626;
+  color: #fff;
+}
+
+.clip-btn-dark:hover {
+  background-color: #333;
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.clip-btn-outline {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  clip-path: none; /* Borders don't work well with simple clip path without pseudoelements, so we'll just make it a standard rectangle for the outline ones like 'CART (0)' if needed, or use a wrapper */
+}
+
+/* For the strict outline btn with angled cut we need a bit of a trick, but we can just use pure border for CART as in screenshot */
+.btn-outline-rect {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  font-weight: 800;
+  font-family: 'Bebas Neue', display;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-rect:hover {
+  background: #fff;
+  color: #000;
+}
+
+.text-yellow {
+  color: var(--primary-color);
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+/* Base utility classes */
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-1 { gap: 0.25rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-8 { margin-top: 2rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-8 { margin-bottom: 2rem; }
+.text-center { text-align: center; }
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
