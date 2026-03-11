@@ -5,8 +5,31 @@ import { useCart } from './CartContext';
 const CartDrawer: React.FC = () => {
   const { items, isCartOpen, closeCart, removeItem, updateQuantity, cartTotal } = useCart();
 
-  const handleCheckout = () => {
-    alert('Checkout flow initiated! In a real app, this would redirect to Stripe, Shopify Checkout, etc.');
+  const handleCheckout = async () => {
+    try {
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ cart: items }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to initialize checkout');
+      }
+
+      const session = await response.json();
+
+      // Redirect to Stripe Checkout
+      if (session.url) {
+        window.location.href = session.url;
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      alert('There was a problem initiating checkout. Please try again later.');
+    }
   };
 
   return (
