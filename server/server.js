@@ -70,10 +70,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
     });
 
     // Dynamically get the front-end origin, effectively bypassing hardcoded Vite ports
-    const origin = req.headers.origin || process.env.CLIENT_URL || 'http://localhost:5173';
-    const baseUrl = origin.endsWith('/black-out-protein') || origin.endsWith('/black-out-protein/')
-      ? origin
-      : `${origin}/black-out-protein`;
+    const baseUrl = process.env.CLIENT_URL || req.headers.origin || 'http://localhost:5173';
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',

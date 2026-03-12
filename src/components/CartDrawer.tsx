@@ -7,7 +7,9 @@ const CartDrawer: React.FC = () => {
 
   const handleCheckout = async () => {
     try {
-      const response = await fetch('/api/create-checkout-session', {
+      const apiUrl = import.meta.env.VITE_API_URL;
+
+      const response = await fetch(`${apiUrl}/api/create-checkout-session`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,7 +24,6 @@ const CartDrawer: React.FC = () => {
 
       const session = await response.json();
 
-      // Redirect to Stripe Checkout
       if (session.url) {
         window.location.href = session.url;
       }
@@ -36,7 +37,7 @@ const CartDrawer: React.FC = () => {
     <>
       {/* Overlay */}
       {isCartOpen && (
-        <div 
+        <div
           onClick={closeCart}
           style={{
             position: 'fixed',
@@ -80,9 +81,9 @@ const CartDrawer: React.FC = () => {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#666' }}>
               <ShoppingBag size={64} style={{ marginBottom: '1rem', opacity: 0.5 }} />
               <p className="font-bebas" style={{ fontSize: '1.5rem', letterSpacing: '1px' }}>YOUR CART IS EMPTY.</p>
-              <button 
+              <button
                 onClick={closeCart}
-                className="clip-btn clip-btn-yellow" 
+                className="clip-btn clip-btn-yellow"
                 style={{ marginTop: '2rem', width: '100%', maxWidth: '200px' }}
               >
                 RETURN TO SHOP
@@ -92,7 +93,7 @@ const CartDrawer: React.FC = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               {items.map((item) => (
                 <div key={item.id} style={{ display: 'flex', gap: '1rem', backgroundColor: '#161616', padding: '1rem', borderRadius: '8px', border: '1px solid #222' }}>
-                  
+
                   {/* Image */}
                   <div style={{ width: '80px', height: '100px', backgroundColor: '#111', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.5rem' }}>
                     <img src={item.image} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
@@ -111,17 +112,17 @@ const CartDrawer: React.FC = () => {
                     </div>
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '1rem' }}>
-                      
+
                       {/* Quantity Selector */}
                       <div style={{ display: 'flex', alignItems: 'center', border: '1px solid #333', borderRadius: '4px', overflow: 'hidden' }}>
-                        <button 
+                        <button
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
                           style={{ padding: '0.4rem', background: '#222', border: 'none', color: '#fff', cursor: 'pointer' }}
                         >
                           <Minus size={14} />
                         </button>
                         <span style={{ width: '30px', textAlign: 'center', fontSize: '0.9rem', fontWeight: 'bold', color: '#fff' }}>{item.quantity}</span>
-                        <button 
+                        <button
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
                           style={{ padding: '0.4rem', background: '#222', border: 'none', color: '#fff', cursor: 'pointer' }}
                         >
@@ -149,8 +150,8 @@ const CartDrawer: React.FC = () => {
                 ${cartTotal.toFixed(2)}
               </span>
             </div>
-            
-            <button 
+
+            <button
               onClick={handleCheckout}
               className="font-bebas"
               style={{
