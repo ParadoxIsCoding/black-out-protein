@@ -10,6 +10,10 @@ const CartDrawer: React.FC = () => {
       const apiUrl = import.meta.env.VITE_API_URL;
       console.log('VITE_API_URL =', apiUrl);
 
+      if (!apiUrl) {
+        throw new Error('VITE_API_URL is missing');
+      }
+
       const response = await fetch(`${apiUrl}/api/create-checkout-session`, {
         method: 'POST',
         headers: {
@@ -18,19 +22,14 @@ const CartDrawer: React.FC = () => {
         body: JSON.stringify({ cart: items }),
       });
 
-      const contentType = response.headers.get('content-type') || '';
+      const text = await response.text();
+      console.log('checkout raw response:', text);
 
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(errorText || 'Failed to initialize checkout');
+        throw new Error(text || 'Failed to initialize checkout');
       }
 
-      if (!contentType.includes('application/json')) {
-        const errorText = await response.text();
-        throw new Error(`Expected JSON response but got: ${errorText}`);
-      }
-
-      const session = await response.json();
+      const session = JSON.parse(text);
 
       if (session.url) {
         window.location.href = session.url;
