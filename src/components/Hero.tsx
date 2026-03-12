@@ -44,8 +44,18 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex gap-4 mb-8">
-            <button className="clip-btn clip-btn-yellow">SHOP THE STACK</button>
-            <button className="clip-btn clip-btn-dark">LEARN MORE</button>
+            <button 
+              className="clip-btn clip-btn-yellow"
+              onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              SHOP THE STACK
+            </button>
+            <button 
+              className="clip-btn clip-btn-dark"
+              onClick={() => document.getElementById('story')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              LEARN MORE
+            </button>
           </div>
 
           {/* Bottom Stats Row */}
