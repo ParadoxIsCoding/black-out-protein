@@ -33,14 +33,14 @@ app.use((req, res, next) => {
 app.use(cors());
 
 const PRODUCT_PRICE_MAP = {
-  "strawberry-880g": "price_1T9eoqBrGmZ3IWDMBxuUEjdd",
-  "vanilla-880g": "price_1T9eoqBrGmZ3IWDMBxuUEjdd",
-  "chocolate-880g": "price_1T9eoqBrGmZ3IWDMBxuUEjdd",
-  "salted-caramel-880g": "price_1T9eoqBrGmZ3IWDMBxuUEjdd",
-  "vanilla-440g": "price_1T9eoqBrGmZ3IWDMBxuUEjdd",
-  "chocolate-440g": "price_1T9eoqBrGmZ3IWDMBxuUEjdd",
-  "strawberry-440g": "price_1T9eoqBrGmZ3IWDMBxuUEjdd",
-  "salted-caramel-440g": "price_1T9eoqBrGmZ3IWDMBxuUEjdd"
+  "strawberry-880g": "price_1T9jfRAzLUywsIqPdODMfBsJ",
+  "vanilla-880g": "price_1T9jemAzLUywsIqPjOlJXfdX",
+  "chocolate-880g": "price_1T9jJlAzLUywsIqPtM0NA79g",
+  "salted-caramel-880g": "price_1T9jHnAzLUywsIqPCGZS6XgT",
+  "vanilla-440g": "price_1T9jFbAzLUywsIqPSCJHhPt0",
+  "chocolate-440g": "price_1T9jEsAzLUywsIqPLdP5Ue1c",
+  "strawberry-440g": "price_1T9jEOAzLUywsIqPpCeFJJVM",
+  "salted-caramel-440g": "price_1T9j3HAzLUywsIqPYQGHJXSF"
 };
 
 // Health check
