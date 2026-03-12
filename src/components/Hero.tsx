@@ -18,24 +18,24 @@ const Hero: React.FC = () => {
   return (
     <section className="bg-grid hero-wrapper" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '100px', position: 'relative' }}>
       <div className="container md-grid-cols-1 md-text-center" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center', height: '100%' }}>
-        
+
         {/* Left Column Text Content */}
         <div className="flex flex-col items-start md-text-center animate-fade-in" style={{ paddingBottom: '6rem' }}>
-          
-          <h1 className="font-bebas hero-title" style={{ 
-            lineHeight: '0.9', 
+
+          <h1 className="font-bebas hero-title" style={{
+            lineHeight: '0.9',
             color: '#fff',
             marginBottom: '2rem',
             letterSpacing: '2px',
             textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
           }}>
-            NOT JUST<br/>PROTEIN.<br/>
-            <span className="text-yellow">TOTAL<br/>RECOVERY.</span>
+            NOT JUST<br />PROTEIN.<br />
+            <span className="text-yellow">TOTAL<br />RECOVERY.</span>
           </h1>
-          
-          <p className="hero-subtitle" style={{ 
-            color: '#ccc', 
-            marginBottom: '3rem', 
+
+          <p className="hero-subtitle" style={{
+            color: '#ccc',
+            marginBottom: '3rem',
             maxWidth: '500px',
             lineHeight: '1.6',
             fontWeight: 400
@@ -44,13 +44,13 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex gap-4 mb-8">
-            <button 
+            <button
               className="clip-btn clip-btn-yellow"
               onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
             >
               SHOP THE STACK
             </button>
-            <button 
+            <button
               className="clip-btn clip-btn-dark"
               onClick={() => document.getElementById('story')?.scrollIntoView({ behavior: 'smooth' })}
             >
@@ -73,7 +73,7 @@ const Hero: React.FC = () => {
               <span className="font-bebas text-white" style={{ fontSize: '1rem', letterSpacing: '2px' }}>CFU PROBIOTICS</span>
             </div>
           </div>
-          
+
         </div>
 
         {/* Right Column Image Placeholder */}
@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
             alignItems: 'center',
             justifyContent: 'center'
           }}>
-             <img src={slideImages[currentSlide]} className="hero-image" alt="Protein Pouch" style={{ width: '400px', height: 'auto', filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.8))', transition: 'opacity 0.5s ease-in-out' }} />
+            <img src={slideImages[currentSlide]} className="hero-image" alt="Protein Pouch" style={{ width: '400px', height: 'auto', filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.8))', transition: 'opacity 0.5s ease-in-out' }} />
           </div>
 
         </div>

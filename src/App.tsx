@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import NewsletterPopout from './components/NewsletterPopout';
 import { CartProvider } from './components/CartContext';
 import CartDrawer from './components/CartDrawer';
+import { Analytics } from "@vercel/analytics/react";
 
 import Success from './components/Success';
 
@@ -39,6 +40,7 @@ function App() {
         <Footer />
         <NewsletterPopout />
         <CartDrawer />
+        <Analytics />
       </div>
     </CartProvider>
   );
