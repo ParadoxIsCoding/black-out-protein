@@ -8,6 +8,7 @@ const CartDrawer: React.FC = () => {
   const handleCheckout = async () => {
     try {
       const apiUrl = import.meta.env.VITE_API_URL;
+      console.log('VITE_API_URL =', apiUrl);
 
       const response = await fetch(`${apiUrl}/api/create-checkout-session`, {
         method: 'POST',
@@ -17,16 +18,26 @@ const CartDrawer: React.FC = () => {
         body: JSON.stringify({ cart: items }),
       });
 
+      const contentType = response.headers.get('content-type') || '';
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to initialize checkout');
+        const errorText = await response.text();
+        throw new Error(errorText || 'Failed to initialize checkout');
+      }
+
+      if (!contentType.includes('application/json')) {
+        const errorText = await response.text();
+        throw new Error(`Expected JSON response but got: ${errorText}`);
       }
 
       const session = await response.json();
 
       if (session.url) {
         window.location.href = session.url;
+        return;
       }
+
+      throw new Error('Stripe session URL was not returned');
     } catch (error) {
       console.error('Checkout error:', error);
       alert('There was a problem initiating checkout. Please try again later.');
