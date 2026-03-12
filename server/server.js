@@ -37,7 +37,7 @@ const PRODUCT_PRICE_MAP = {
   'vanilla-880g': 'price_1T9jemAzLUywsIqPjOlJXfdX',
   'chocolate-880g': 'price_1T9jJlAzLUywsIqPtM0NA79g',
   'salted-caramel-880g': 'price_1T9jHnAzLUywsIqPCGZS6XgT',
-  'vanilla-440g': 'price_1T9jFbAzLUywsIqPSCJHhPt0',
+  'vanilla-440g': 'price_1TA7lZAzLUywsIqPvPH4UErF',
   'chocolate-440g': 'price_1T9jEsAzLUywsIqPLdP5Ue1c',
   'strawberry-440g': 'price_1T9jEOAzLUywsIqPpCeFJJVM',
   'salted-caramel-440g': 'price_1T9j3HAzLUywsIqPYQGHJXSF',
