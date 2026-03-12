@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import saltedcImg from '../assets/saltedc.png';
+import saltedc880gImg from '../assets/saltedc880g.png';
 import strawberryImg from '../assets/strawberry.png';
+import strawberry880gImg from '../assets/strawberry880g.png';
 import chocImg from '../assets/choc.png';
+import choc880gImg from '../assets/choc880g.png';
 import vanillaImg from '../assets/vanilla.png';
+import vanilla880gImg from '../assets/vanilla880g.png';
 import { useCart } from './CartContext';
 
 type ProductSize = '440g' | '880g';
@@ -16,6 +20,7 @@ interface ProductData {
   ingredients: string;
   allergens: string;
   image: string;
+  image880g: string;
 }
 
 const productsData: ProductData[] = [
@@ -27,7 +32,8 @@ const productsData: ProductData[] = [
     stats: '26g Plant Protein | 4g Creatine',
     ingredients: 'Protein blend (72%) (faba bean protein isolate, pea protein isolate, brown rice protein isolate), creatine monohydrate, inulin, MCT oil powder, coconut milk powder, natural flavours, salt (1.9%), caramelised sugar (caramelised sugar syrup, maltodextrin, vegetable gum (415), anticaking agent (551), sweeteners (960, 957)',
     allergens: 'Milk, soy.',
-    image: saltedcImg
+    image: saltedcImg,
+    image880g: saltedc880gImg
   },
   {
     id: 'strawberry',
@@ -37,7 +43,8 @@ const productsData: ProductData[] = [
     stats: '25g Protein | 4g Creatine | 10g Hyd. Collagen',
     ingredients: 'Protein blend (51%) [whey protein concentrate, milk protein concentrate, whey protein isolate], hydrolysed collagen powder (25%), creatine monohydrate (10%), inulin, natural flavours, vegetable gum (412), emulsifier [322 (soy)], sweetener (955), natural colour (162).',
     allergens: 'Milk, soy.',
-    image: strawberryImg
+    image: strawberryImg,
+    image880g: strawberry880gImg
   },
   {
     id: 'chocolate',
@@ -47,7 +54,8 @@ const productsData: ProductData[] = [
     stats: '26g Protein | 4g Creatine | 10B CFU Probiotics',
     ingredients: 'Protein blend (79%) [whey protein concentrate, milk protein concentrate, whey protein isolate], (10%) creatine monohydrate, inulin, cocoa powder (4.5%), natural flavours, vegetable gum (412), emulsifier [322 (soy)], sweetener (955), probiotics (Bacillus coagulans), anticaking agent (551), acidity regulator.',
     allergens: 'Milk, soy.',
-    image: chocImg
+    image: chocImg,
+    image880g: choc880gImg
   },
   {
     id: 'vanilla',
@@ -57,7 +65,8 @@ const productsData: ProductData[] = [
     stats: '26g Protein | 4g Creatine | 10B CFU Probiotics',
     ingredients: 'Protein blend (81%) [whey protein concentrate, milk protein concentrate, whey protein isolate], (10%) creatine monohydrate, inulin, natural flavours, vegetable gum (412), emulsifier [322 (soy)], sweetener (955), probiotics (Bacillus coagulans).',
     allergens: 'Milk, soy.',
-    image: vanillaImg
+    image: vanillaImg,
+    image880g: vanilla880gImg
   }
 ];
 
@@ -73,7 +82,7 @@ const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
       name: product.name,
       size: size,
       price: priceNumber,
-      image: product.image
+      image: size === '880g' ? product.image880g : product.image
     });
   };
 
@@ -116,7 +125,7 @@ const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
         </div>
 
         {/* Product Image */}
-        <img src={product.image} alt={product.name} style={{ height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.8))' }} />
+        <img src={size === '880g' ? product.image880g : product.image} alt={product.name} style={{ height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.8))' }} />
       </div>
 
       {/* Content Area */}
