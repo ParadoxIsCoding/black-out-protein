@@ -215,10 +215,18 @@ a:hover {
   .stats-row {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem !important;
+    gap: 1.5rem !important;
   }
   .stats-row .font-bebas:first-child {
-    font-size: 2rem !important;
+    font-size: 2.2rem !important;
+  }
+  .stats-row .font-bebas:first-child span {
+    font-size: 1.6rem !important;
+  }
+  .stats-row .font-bebas:last-child {
+    font-size: 0.9rem !important;
+    letter-spacing: 1px !important;
+    text-align: center;
   }
   
   .features-grid {
