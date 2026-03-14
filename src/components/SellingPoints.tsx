@@ -80,7 +80,7 @@ const SellingPoints: React.FC = () => {
               TARGETED ADDITIVES
             </h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.6' }}>
-              10 billion CFU probiotics in dairy blends and 10g hydrolyzed collagen in our strawberry formula.
+              10 billion CFU probiotics in dairy blends and 10<span style={{ fontFamily: 'Inter, sans-serif', textTransform: 'lowercase', fontSize: '0.9rem', fontWeight: 700 }}>g</span> hydrolyzed collagen in our strawberry formula.
             </p>
           </div>
 

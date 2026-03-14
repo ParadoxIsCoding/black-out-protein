@@ -38,7 +38,7 @@ const productsData: ProductData[] = [
   {
     id: 'strawberry',
     name: 'STRAWBERRY',
-    tag: 'NEW FLAVOUR',
+    tag: 'COLLAGEN',
     tagStyle: { bg: '#e11d48', text: '#fff' },
     stats: '25g PROTEIN | 4g CREATINE | 10g HYD. COLLAGEN',
     ingredients: 'Protein blend (51%) [whey protein concentrate, milk protein concentrate, whey protein isolate], hydrolysed collagen powder (25%), creatine monohydrate (10%), inulin, natural flavours, vegetable gum (412), emulsifier [322 (soy)], sweetener (955), natural colour (162).',
