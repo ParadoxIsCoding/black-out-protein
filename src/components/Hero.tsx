@@ -61,15 +61,15 @@ const Hero: React.FC = () => {
           {/* Bottom Stats Row */}
           <div className="flex gap-8 items-end stats-row" style={{ marginTop: '2rem' }}>
             <div className="flex flex-col items-start md-text-center">
-              <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>26g</span>
+              <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>26<span style={{ fontFamily: 'Inter, sans-serif', textTransform: 'lowercase', fontSize: '2.2rem', fontWeight: 700 }}>g</span></span>
               <span className="font-bebas text-white" style={{ fontSize: '1rem', letterSpacing: '2px' }}>PROTEIN</span>
             </div>
             <div className="flex flex-col items-start md-text-center">
-              <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>4g</span>
+              <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>4<span style={{ fontFamily: 'Inter, sans-serif', textTransform: 'lowercase', fontSize: '2.2rem', fontWeight: 700 }}>g</span></span>
               <span className="font-bebas text-white" style={{ fontSize: '1rem', letterSpacing: '2px' }}>CREATINE</span>
             </div>
             <div className="flex flex-col items-start md-text-center">
-              <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>10B</span>
+              <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>10<span style={{ fontFamily: 'Inter, sans-serif', textTransform: 'lowercase', fontSize: '2.2rem', fontWeight: 700 }}>b</span></span>
               <span className="font-bebas text-white" style={{ fontSize: '1rem', letterSpacing: '2px' }}>CFU PROBIOTICS</span>
             </div>
           </div>

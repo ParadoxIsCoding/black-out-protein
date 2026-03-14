@@ -5,7 +5,7 @@ const SellingPoints: React.FC = () => {
   return (
     <section id="why-us" className="bg-grid" style={{ padding: '4rem 0 8rem 0' }}>
       <div className="container flex flex-col items-center">
-        
+
         <h2 className="font-bebas" style={{ fontSize: '4rem', color: '#fff', marginBottom: '1rem', letterSpacing: '2px', textAlign: 'center' }}>
           EXPERTLY <span className="text-yellow">FORMULATED</span>
         </h2>
@@ -14,7 +14,7 @@ const SellingPoints: React.FC = () => {
         </p>
 
         <div className="features-grid md-gap-4" style={{ display: 'grid', gap: '2rem', width: '100%' }}>
-          
+
           {/* Card 1 */}
           <div style={{
             backgroundColor: '#161616',
@@ -31,7 +31,7 @@ const SellingPoints: React.FC = () => {
               <Zap size={40} />
             </div>
             <h3 className="font-bebas" style={{ fontSize: '1.5rem', color: '#fff', letterSpacing: '1px', marginBottom: '1rem' }}>
-              4G CREATINE MONOHYDRATE
+              4<span style={{ fontFamily: 'Inter, sans-serif', textTransform: 'lowercase', fontSize: '1.2rem', fontWeight: 700 }}>g</span> CREATINE MONOHYDRATE
             </h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.6' }}>
               Included in every serve. Purposed to enhance focus, increase strength, and support muscle mass gain.
@@ -54,7 +54,7 @@ const SellingPoints: React.FC = () => {
               💪 {/* Using emoji as a placeholder for the bicep graphic in screenshot */}
             </div>
             <h3 className="font-bebas" style={{ fontSize: '1.5rem', color: '#fff', letterSpacing: '1px', marginBottom: '1rem' }}>
-              26G QUALITY PROTEIN
+              26<span style={{ fontFamily: 'Inter, sans-serif', textTransform: 'lowercase', fontSize: '1.2rem', fontWeight: 700 }}>g</span> QUALITY PROTEIN
             </h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.6' }}>
               Whey isolate and concentrate blends, plus premium plant protein options for ultimate flexibility.

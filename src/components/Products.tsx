@@ -29,7 +29,7 @@ const productsData: ProductData[] = [
     name: 'SALTED CARAMEL',
     tag: 'PLANT BASED',
     tagStyle: { bg: '#22c55e', text: '#fff' },
-    stats: '26g Plant Protein | 4g Creatine',
+    stats: '26g PLANT PROTEIN | 4g CREATINE',
     ingredients: 'Protein blend (72%) (faba bean protein isolate, pea protein isolate, brown rice protein isolate), creatine monohydrate, inulin, MCT oil powder, coconut milk powder, natural flavours, salt (1.9%), caramelised sugar (caramelised sugar syrup, maltodextrin, vegetable gum (415), anticaking agent (551), sweeteners (960, 957)',
     allergens: 'Milk, soy.',
     image: saltedcImg,
@@ -40,7 +40,7 @@ const productsData: ProductData[] = [
     name: 'STRAWBERRY',
     tag: 'NEW FLAVOUR',
     tagStyle: { bg: '#e11d48', text: '#fff' },
-    stats: '25g Protein | 4g Creatine | 10g Hyd. Collagen',
+    stats: '25g PROTEIN | 4g CREATINE | 10g HYD. COLLAGEN',
     ingredients: 'Protein blend (51%) [whey protein concentrate, milk protein concentrate, whey protein isolate], hydrolysed collagen powder (25%), creatine monohydrate (10%), inulin, natural flavours, vegetable gum (412), emulsifier [322 (soy)], sweetener (955), natural colour (162).',
     allergens: 'Milk, soy.',
     image: strawberryImg,
@@ -51,7 +51,7 @@ const productsData: ProductData[] = [
     name: 'CHOCOLATE',
     tag: 'BEST SELLER',
     tagStyle: { bg: '#fff', text: '#000' },
-    stats: '26g Protein | 4g Creatine | 10B CFU Probiotics',
+    stats: '26g PROTEIN | 4g CREATINE | 10B CFU PROBIOTICS',
     ingredients: 'Protein blend (79%) [whey protein concentrate, milk protein concentrate, whey protein isolate], (10%) creatine monohydrate, inulin, cocoa powder (4.5%), natural flavours, vegetable gum (412), emulsifier [322 (soy)], sweetener (955), probiotics (Bacillus coagulans), anticaking agent (551), acidity regulator.',
     allergens: 'Milk, soy.',
     image: chocImg,
@@ -62,7 +62,7 @@ const productsData: ProductData[] = [
     name: 'VANILLA',
     tag: 'CLASSIC',
     tagStyle: { bg: '#fff', text: '#000' },
-    stats: '26g Protein | 4g Creatine | 10B CFU Probiotics',
+    stats: '26g PROTEIN | 4g CREATINE | 10B CFU PROBIOTICS',
     ingredients: 'Protein blend (81%) [whey protein concentrate, milk protein concentrate, whey protein isolate], (10%) creatine monohydrate, inulin, natural flavours, vegetable gum (412), emulsifier [322 (soy)], sweetener (955), probiotics (Bacillus coagulans).',
     allergens: 'Milk, soy.',
     image: vanillaImg,
@@ -130,13 +130,13 @@ const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
 
       {/* Content Area */}
       <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-        
+
         <h3 className="font-bebas" style={{ fontSize: '2.3rem', color: '#fff', lineHeight: 1, letterSpacing: '1px', marginBottom: '0.5rem' }}>
           {product.name}
         </h3>
-        
+
         {/* Yellow Stats */}
-        <div style={{ color: 'var(--primary-color)', fontSize: '0.8rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1rem' }}>
+        <div style={{ color: 'var(--primary-color)', fontSize: '0.8rem', fontWeight: 'bold', letterSpacing: '1px', marginBottom: '1rem' }}>
           {product.stats}
         </div>
 
@@ -179,7 +179,7 @@ const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
         </div>
 
         {/* Add to Cart Button */}
-        <button 
+        <button
           onClick={handleAddToCart}
           className="font-bebas"
           style={{
@@ -210,10 +210,10 @@ const Products: React.FC = () => {
     <section id="products" style={{ padding: '4rem 0 8rem 0', backgroundColor: 'var(--bg-color)' }}>
       <div className="container">
         {/* Compact Grid Layout for 4 items */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', 
-          gap: '2rem' 
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: '2rem'
         }}>
           {productsData.map(product => (
             <ProductCard key={product.id} product={product} />
