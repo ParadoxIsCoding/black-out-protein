@@ -5,6 +5,18 @@ import { Star, ChevronDown, ChevronUp, Plus, Minus } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
 
+import chocolateTable from '../assets/chochlatetable.png';
+import saltedCaramelTable from '../assets/scaltable.png';
+import strawberryTable from '../assets/strawberrytable.png';
+import vanillaTable from '../assets/vanillatable.png';
+
+const nutritionTableImages: Record<string, string> = {
+  'salted-caramel': saltedCaramelTable,
+  'strawberry': strawberryTable,
+  'chocolate': chocolateTable,
+  'vanilla': vanillaTable,
+};
+
 interface Review {
   name: string;
   text: string;
@@ -208,7 +220,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId }) => {
           {product.name} RECOVERY FORMULA
         </h1>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '4rem', marginBottom: '6rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '4rem', marginBottom: '1.5rem' }}>
 
           {/* Left: Product Image */}
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
@@ -285,11 +297,43 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId }) => {
               <Accordion title="ALLERGEN INFORMATION">
                 {product.allergens} Processed in the same facility as milk and soy.
               </Accordion>
-              <Accordion title="HOW TO USE ME" defaultOpen={true}>
-                Drop 1 heaped scoop of powder into 250ml of cold milk or water and shake or stir until no solid is visible. 1-2 servings a day recommended. Recovery formula is most effective when taken daily after physical exercise.
-              </Accordion>
             </div>
 
+          </div>
+        </div>
+
+        {/* Nutrition Table + How To Use Me Section */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+          .nutrition-howto-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 4rem;
+          }
+          @media (max-width: 768px) {
+            .nutrition-howto-row {
+              grid-template-columns: 1fr;
+              gap: 2rem;
+            }
+          }
+        `}} />
+        <div className="nutrition-howto-row">
+          {/* Left: Nutrition Table */}
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
+            <img
+              src={nutritionTableImages[product.id]}
+              alt={`${product.name} Nutrition Information`}
+              style={{ width: '100%', maxWidth: '500px', height: 'auto', borderRadius: '8px', border: '1px solid #333' }}
+            />
+          </div>
+
+          {/* Right: How To Use Me */}
+          <div style={{ backgroundColor: '#161616', padding: '0 2rem', borderRadius: '8px' }}>
+            <Accordion title="HOW TO USE ME" defaultOpen={true}>
+              Drop 1 heaped scoop of powder into 250ml of cold milk or water and shake or stir until no solid is visible. 1-2 servings a day recommended. Recovery formula is most effective when taken daily after physical exercise.
+            </Accordion>
           </div>
         </div>
 
