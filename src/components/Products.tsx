@@ -134,6 +134,40 @@ const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
         >
           ADD TO CART
         </button>
+
+        {/* Learn More Button */}
+        <a
+          href={`/product/${product.id}`}
+          className="font-bebas"
+          style={{
+            display: 'block',
+            width: '100%',
+            padding: '0.75rem',
+            fontSize: '1.2rem',
+            letterSpacing: '1px',
+            backgroundColor: 'transparent',
+            color: 'var(--primary-color)',
+            border: '1px solid var(--primary-color)',
+            borderRadius: '0',
+            cursor: 'pointer',
+            clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)',
+            transition: 'all 0.3s ease',
+            textAlign: 'center',
+            textDecoration: 'none',
+            marginTop: '0.5rem',
+            boxSizing: 'border-box'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.backgroundColor = 'var(--primary-color)';
+            e.currentTarget.style.color = '#000';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.backgroundColor = 'transparent';
+            e.currentTarget.style.color = 'var(--primary-color)';
+          }}
+        >
+          LEARN MORE
+        </a>
       </div>
     </div>
   );
