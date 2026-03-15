@@ -44,7 +44,7 @@ const PRODUCT_PRICE_MAP = {
 };
 
 // Your active Stripe shipping rate ID
-const SHIPPING_RATE_ID = 'shr_1TA6l9AzLUywsIqPRvzGfMFf';
+const SHIPPING_RATE_ID = 'shr_1TB5DWAzLUywsIqPA87v8kMq';
 
 // Health check
 app.get('/api/health', (req, res) => {
