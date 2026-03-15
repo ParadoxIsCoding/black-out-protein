@@ -29,7 +29,7 @@ export const productsData: ProductData[] = [
     tagStyle: { bg: '#22c55e', text: '#fff' },
     stats: '26g PLANT PROTEIN | 4g CREATINE',
     ingredients: 'Protein blend (72%) (faba bean protein isolate, pea protein isolate, brown rice protein isolate), creatine monohydrate, inulin, MCT oil powder, coconut milk powder, natural flavours, salt (1.9%), caramelised sugar (caramelised sugar syrup, maltodextrin, vegetable gum (415), anticaking agent (551), sweeteners (960, 957)',
-    allergens: 'Milk, soy.',
+    allergens: '',
     image: saltedcImg,
     image880g: saltedc880gImg
   },
