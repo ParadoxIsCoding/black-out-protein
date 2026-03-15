@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
 export interface CartItem {
@@ -27,8 +27,19 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<CartItem[]>(() => {
+    try {
+      const saved = localStorage.getItem('blackout_cart');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('blackout_cart', JSON.stringify(items));
+  }, [items]);
 
   const addItem = (newItem: Omit<CartItem, 'quantity' | 'id'>) => {
     const id = `${newItem.productId}-${newItem.size}`;

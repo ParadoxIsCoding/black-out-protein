@@ -11,9 +11,11 @@ import CartDrawer from './components/CartDrawer';
 import { Analytics } from "@vercel/analytics/react";
 
 import Success from './components/Success';
+import ProductPage from './components/ProductPage';
 
 function App() {
   const isSuccessPage = window.location.pathname.includes('/success');
+  const isProductPage = window.location.pathname.startsWith('/product/');
 
   if (isSuccessPage) {
     return (
@@ -21,6 +23,19 @@ function App() {
         <div className="app-wrapper">
           <Header />
           <Success />
+        </div>
+      </CartProvider>
+    );
+  }
+
+  if (isProductPage) {
+    const productId = window.location.pathname.split('/')[2];
+    return (
+      <CartProvider>
+        <div className="app-wrapper">
+          <ProductPage productId={productId} />
+          <CartDrawer />
+          <Analytics />
         </div>
       </CartProvider>
     );

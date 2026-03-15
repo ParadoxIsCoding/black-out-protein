@@ -30,20 +30,22 @@ const Header: React.FC = () => {
 
         {/* LOGO area */}
         <div className="flex items-center">
-          <img src={logoImg} alt="Blackd Out Protein Logo" style={{ height: 'auto', maxHeight: '50px', width: 'auto' }} />
+          <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
+            <img src={logoImg} alt="Blackd Out Protein Logo" style={{ height: 'auto', maxHeight: '50px', width: 'auto' }} />
+          </a>
         </div>
 
         {/* Desktop Nav - Centered */}
         <nav className="flex items-center gap-8 font-bebas md-hide" style={{ fontSize: '1.2rem', letterSpacing: '2px', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
-          <a href="#" className="hover-yellow" style={{ color: '#fff' }}>HOME</a>
-          <a href="#story" className="hover-yellow" style={{ color: '#fff' }}>ABOUT</a>
-          <a href="#products" className="hover-yellow" style={{ color: '#fff' }}>SHOP</a>
+          <a href="/" className="hover-yellow" style={{ color: '#fff' }}>HOME</a>
+          <a href="/#story" className="hover-yellow" style={{ color: '#fff' }}>ABOUT</a>
+          <a href="/#products" className="hover-yellow" style={{ color: '#fff' }}>SHOP</a>
         </nav>
 
         {/* Right side buttons */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <button className="btn-outline-rect" onClick={openCart}>CART ({cartCount})</button>
-          <a href="#products" className="clip-btn clip-btn-yellow" style={{ display: 'inline-block', lineHeight: '1' }}>BUY NOW</a>
+          <a href="/#products" className="clip-btn clip-btn-yellow" style={{ display: 'inline-block', lineHeight: '1' }}>BUY NOW</a>
         </div>
       </div>
     </header>
