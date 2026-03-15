@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Star } from 'lucide-react';
 import sc1Img from '../assets/sc1.png';
 import ss1Img from '../assets/ss1.png';
 import sv1Img from '../assets/sv1.png';
@@ -61,15 +62,15 @@ const Hero: React.FC = () => {
           {/* Bottom Stats Row */}
           <div className="flex gap-8 items-end stats-row" style={{ marginTop: '2rem' }}>
             <div className="flex flex-col items-start md-text-center">
-              <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>26<span style={{ fontFamily: 'Inter, sans-serif', textTransform: 'lowercase', fontSize: '2.2rem', fontWeight: 700 }}>g</span></span>
+              <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>26G</span>
               <span className="font-bebas text-white" style={{ fontSize: '1rem', letterSpacing: '2px' }}>PROTEIN</span>
             </div>
             <div className="flex flex-col items-start md-text-center">
-              <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>4<span style={{ fontFamily: 'Inter, sans-serif', textTransform: 'lowercase', fontSize: '2.2rem', fontWeight: 700 }}>g</span></span>
+              <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>4G</span>
               <span className="font-bebas text-white" style={{ fontSize: '1rem', letterSpacing: '2px' }}>CREATINE</span>
             </div>
             <div className="flex flex-col items-start md-text-center">
-              <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>10<span style={{ fontFamily: 'Inter, sans-serif', textTransform: 'lowercase', fontSize: '2.2rem', fontWeight: 700 }}>b</span></span>
+              <span className="font-bebas text-yellow" style={{ fontSize: '3rem', lineHeight: '1' }}>10B</span>
               <span className="font-bebas text-white" style={{ fontSize: '1rem', letterSpacing: '2px' }}>CFU PROBIOTICS</span>
             </div>
           </div>
@@ -102,7 +103,21 @@ const Hero: React.FC = () => {
             alignItems: 'center',
             justifyContent: 'center'
           }}>
-            <img src={slideImages[currentSlide]} className="hero-image" alt="Protein Pouch" style={{ width: '400px', height: 'auto', filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.8))', transition: 'opacity 0.5s ease-in-out' }} />
+            <img src={slideImages[currentSlide]} className="hero-image" alt="Protein Pouch" style={{ width: '400px', maxWidth: '100%', height: 'auto', filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.8))', transition: 'opacity 0.5s ease-in-out' }} />
+
+            {/* Reviews Tab */}
+            <div className="flex items-center gap-2 mt-4 bg-black/40 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/10 shadow-xl" style={{ marginTop: '1rem' }}>
+              <div className="flex gap-1 text-yellow">
+                <Star className="w-5 h-5 fill-current" />
+                <Star className="w-5 h-5 fill-current" />
+                <Star className="w-5 h-5 fill-current" />
+                <Star className="w-5 h-5 fill-current" />
+                <Star className="w-5 h-5 fill-current" />
+              </div>
+              <span className="font-bebas" style={{ color: '#fff', fontSize: '1.2rem', letterSpacing: '1px', paddingTop: '3px', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+                100+ 5 STAR REVIEWS
+              </span>
+            </div>
           </div>
 
         </div>
