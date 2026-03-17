@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useCart } from './CartContext';
 import { productsData, type ProductData, type ProductSize } from '../data/products';
+import { getDisplayPrices, getEffectivePrice } from '../utils/saleLogic';
+
 
 const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
   const [size, setSize] = useState<ProductSize>('440g');
-  const price = size === '440g' ? '$29.00' : '$49.90';
-  const priceNumber = size === '440g' ? 29.00 : 49.90;
+  const { original, sale, isActive } = getDisplayPrices(size);
+  const priceNumber = getEffectivePrice(original, size);
   const { addItem } = useCart();
 
   const handleAddToCart = () => {
@@ -41,19 +43,39 @@ const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
         borderBottom: '1px solid #222'
       }}>
         {/* Floating Tag */}
-        <div className="font-bebas" style={{
+        <div style={{
           position: 'absolute',
           top: '1rem',
           right: '1rem',
-          backgroundColor: product.tagStyle.bg,
-          color: product.tagStyle.text,
-          padding: '0.2rem 0.6rem',
-          fontSize: '1rem',
-          letterSpacing: '1px',
-          borderRadius: '4px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+          gap: '0.5rem',
           zIndex: 10
         }}>
-          {product.tag}
+          <div className="font-bebas" style={{
+            backgroundColor: product.tagStyle.bg,
+            color: product.tagStyle.text,
+            padding: '0.2rem 0.6rem',
+            fontSize: '1rem',
+            letterSpacing: '1px',
+            borderRadius: '4px',
+          }}>
+            {product.tag}
+          </div>
+          {isActive && (
+            <div className="font-bebas" style={{
+              backgroundColor: '#22c55e',
+              color: '#fff',
+              padding: '0.2rem 0.6rem',
+              fontSize: '1rem',
+              letterSpacing: '1px',
+              borderRadius: '4px',
+              border: '1px solid #d4af37'
+            }}>
+              15% OFF
+            </div>
+          )}
         </div>
 
         {/* Product Image */}
@@ -102,8 +124,27 @@ const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
         </div>
 
         {/* Price */}
-        <div style={{ display: 'flex', alignItems: 'flex-end', gap: '0.5rem', marginBottom: '1rem' }}>
-          <span className="font-bebas" style={{ fontSize: '2.5rem', color: '#fff', lineHeight: 1 }}>{price}</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
+          {isActive ? (
+            <>
+              <span className="font-bebas" style={{ fontSize: '2.5rem', color: '#22c55e', lineHeight: 1 }}>
+                ${sale.toFixed(2)}
+              </span>
+              <span className="font-bebas" style={{ 
+                fontSize: '1.5rem', 
+                color: '#666', 
+                textDecoration: 'line-through',
+                lineHeight: 1,
+                marginBottom: '0.2rem'
+              }}>
+                ${original.toFixed(2)}
+              </span>
+            </>
+          ) : (
+            <span className="font-bebas" style={{ fontSize: '2.5rem', color: '#fff', lineHeight: 1 }}>
+              ${original.toFixed(2)}
+            </span>
+          )}
         </div>
 
         {/* Ingredients / Allergens (Small text) */}

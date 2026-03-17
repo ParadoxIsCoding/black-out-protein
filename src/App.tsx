@@ -9,6 +9,8 @@ import NewsletterPopout from './components/NewsletterPopout';
 import { CartProvider } from './components/CartContext';
 import CartDrawer from './components/CartDrawer';
 import { Analytics } from "@vercel/analytics/react";
+import SaleBanner from './components/SaleBanner';
+
 
 import Success from './components/Success';
 import ProductPage from './components/ProductPage';
@@ -21,6 +23,7 @@ function App() {
     return (
       <CartProvider>
         <div className="app-wrapper">
+          <SaleBanner />
           <Header />
           <Success />
         </div>
@@ -33,6 +36,7 @@ function App() {
     return (
       <CartProvider>
         <div className="app-wrapper">
+          <SaleBanner />
           <ProductPage productId={productId} />
           <CartDrawer />
           <Analytics />
@@ -44,6 +48,7 @@ function App() {
   return (
     <CartProvider>
       <div className="app-wrapper">
+        <SaleBanner />
         <Header />
         <main>
           <Hero />
