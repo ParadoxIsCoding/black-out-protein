@@ -14,10 +14,12 @@ import SaleBanner from './components/SaleBanner';
 
 import Success from './components/Success';
 import ProductPage from './components/ProductPage';
+import ReviewsPage from './components/ReviewsPage';
 
 function App() {
   const isSuccessPage = window.location.pathname.includes('/success');
   const isProductPage = window.location.pathname.startsWith('/product/');
+  const isReviewsPage = window.location.pathname === '/reviews';
 
   if (isSuccessPage) {
     return (
@@ -26,6 +28,19 @@ function App() {
           <SaleBanner />
           <Header />
           <Success />
+        </div>
+      </CartProvider>
+    );
+  }
+
+  if (isReviewsPage) {
+    return (
+      <CartProvider>
+        <div className="app-wrapper">
+          <SaleBanner />
+          <ReviewsPage />
+          <CartDrawer />
+          <Analytics />
         </div>
       </CartProvider>
     );

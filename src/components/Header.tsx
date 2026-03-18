@@ -40,6 +40,7 @@ const Header: React.FC = () => {
           <a href="/" className="hover-yellow" style={{ color: '#fff' }}>HOME</a>
           <a href="/#story" className="hover-yellow" style={{ color: '#fff' }}>ABOUT</a>
           <a href="/#products" className="hover-yellow" style={{ color: '#fff' }}>SHOP</a>
+          <a href="/reviews" className="hover-yellow" style={{ color: '#fff' }}>REVIEWS</a>
         </nav>
 
         {/* Right side buttons */}
