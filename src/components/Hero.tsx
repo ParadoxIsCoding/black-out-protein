@@ -53,9 +53,9 @@ const Hero: React.FC = () => {
             </button>
             <button
               className="clip-btn clip-btn-dark"
-              onClick={() => document.getElementById('story')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => window.location.href = '/reviews'}
             >
-              LEARN MORE
+              REVIEWS
             </button>
           </div>
 
