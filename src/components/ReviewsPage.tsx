@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import { productsData } from '../data/products';
-import { productPageData, type Review } from '../data/productContent';
+import { productPageData } from '../data/productContent';
 import { Star } from 'lucide-react';
 
 const ReviewsPage: React.FC = () => {

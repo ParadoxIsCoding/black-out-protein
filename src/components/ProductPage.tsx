@@ -19,7 +19,7 @@ const nutritionTableImages: Record<string, string> = {
   'vanilla': vanillaTable,
 };
 
-import { productPageData, type Review } from '../data/productContent';
+import { productPageData } from '../data/productContent';
 
 
 const Accordion: React.FC<{ title: string; children: React.ReactNode; defaultOpen?: boolean }> = ({ title, children, defaultOpen = false }) => {
