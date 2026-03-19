@@ -43,8 +43,21 @@ const PRODUCT_PRICE_MAP = {
   'salted-caramel-440g': 'price_1T9j3HAzLUywsIqPYQGHJXSF',
 };
 
-// Your active Stripe shipping rate ID
-const SHIPPING_RATE_ID = 'shr_1TB5DWAzLUywsIqPA87v8kMq';
+// Trusted server-side prices in cents
+const PRODUCT_CENT_VALUES = {
+  'strawberry-880g': 4990,
+  'vanilla-880g': 4990,
+  'chocolate-880g': 4990,
+  'salted-caramel-880g': 4990,
+  'vanilla-440g': 2900,
+  'chocolate-440g': 2900,
+  'strawberry-440g': 2900,
+  'salted-caramel-440g': 2900,
+};
+
+// Stripe Shipping Rate IDs
+const SHIPPING_FREE = 'shr_1TCZ8rAzLUywsIqPjOJL6Qgf';
+const SHIPPING_REGULAR = 'shr_1TB5DWAzLUywsIqPA87v8kMq';
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -60,18 +73,31 @@ app.post('/api/create-checkout-session', async (req, res) => {
       return res.status(400).json({ error: 'Cart is empty or invalid' });
     }
 
+    let subtotalCents = 0;
+
     const line_items = cart.map((item) => {
       const priceId = PRODUCT_PRICE_MAP[item.id];
+      const unitAmountCents = PRODUCT_CENT_VALUES[item.id];
 
-      if (!priceId) {
+      if (!priceId || unitAmountCents === undefined) {
         throw new Error(`Product price mapping not found for cart item: ${item.id}`);
       }
 
+      // Quantity validation
+      const quantity = Number(item.quantity);
+      if (!Number.isInteger(quantity) || quantity <= 0) {
+        throw new Error(`Invalid quantity for item: ${item.id}`);
+      }
+
+      subtotalCents += unitAmountCents * quantity;
+
       return {
         price: priceId,
-        quantity: item.quantity,
+        quantity: quantity,
       };
     });
+
+    const shippingRateId = subtotalCents >= 7000 ? SHIPPING_FREE : SHIPPING_REGULAR;
 
     // Dynamically get the front-end origin, effectively bypassing hardcoded Vite ports
     const baseUrl = process.env.CLIENT_URL || req.headers.origin || 'http://localhost:5173';
@@ -87,7 +113,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
 
       shipping_options: [
         {
-          shipping_rate: SHIPPING_RATE_ID,
+          shipping_rate: shippingRateId,
         },
       ],
 
