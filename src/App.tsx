@@ -5,11 +5,10 @@ import SellingPoints from './components/SellingPoints';
 import Marquee from './components/Marquee';
 import Story from './components/Story';
 import Footer from './components/Footer';
-import NewsletterPopout from './components/NewsletterPopout';
-import { CartProvider } from './components/CartContext';
-import CartDrawer from './components/CartDrawer';
 import { Analytics } from "@vercel/analytics/react";
 import SaleBanner from './components/SaleBanner';
+import { CartProvider } from './components/CartContext';
+import CartDrawer from './components/CartDrawer';
 
 
 import Success from './components/Success';
@@ -73,7 +72,6 @@ function App() {
           <Story />
         </main>
         <Footer />
-        <NewsletterPopout />
         <CartDrawer />
         <Analytics />
       </div>

@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import { useCart } from './CartContext';
 import { productsData, type ProductData, type ProductSize } from '../data/products';
-import { getDisplayPrices, getEffectivePrice } from '../utils/saleLogic';
-
-
 const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
   const [size, setSize] = useState<ProductSize>('440g');
-  const { original, sale, isActive } = getDisplayPrices(size);
-  const priceNumber = getEffectivePrice(original, size);
   const { addItem } = useCart();
+
+  const originalPrice = size === '880g' ? 49.90 : 29.00;
 
   const handleAddToCart = () => {
     addItem({
       productId: product.id,
       name: product.name,
       size: size,
-      price: priceNumber,
+      price: originalPrice,
       image: size === '880g' ? product.image880g : product.image
     });
   };
@@ -63,19 +60,6 @@ const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
           }}>
             {product.tag}
           </div>
-          {isActive && (
-            <div className="font-bebas" style={{
-              backgroundColor: '#22c55e',
-              color: '#fff',
-              padding: '0.2rem 0.6rem',
-              fontSize: '1rem',
-              letterSpacing: '1px',
-              borderRadius: '4px',
-              border: '1px solid #d4af37'
-            }}>
-              15% OFF
-            </div>
-          )}
         </div>
 
         {/* Product Image */}
@@ -125,26 +109,9 @@ const ProductCard: React.FC<{ product: ProductData }> = ({ product }) => {
 
         {/* Price */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
-          {isActive ? (
-            <>
-              <span className="font-bebas" style={{ fontSize: '2.5rem', color: '#22c55e', lineHeight: 1 }}>
-                ${sale.toFixed(2)}
-              </span>
-              <span className="font-bebas" style={{ 
-                fontSize: '1.5rem', 
-                color: '#666', 
-                textDecoration: 'line-through',
-                lineHeight: 1,
-                marginBottom: '0.2rem'
-              }}>
-                ${original.toFixed(2)}
-              </span>
-            </>
-          ) : (
-            <span className="font-bebas" style={{ fontSize: '2.5rem', color: '#fff', lineHeight: 1 }}>
-              ${original.toFixed(2)}
-            </span>
-          )}
+          <span className="font-bebas" style={{ fontSize: '2.5rem', color: '#fff', lineHeight: 1 }}>
+            ${originalPrice.toFixed(2)}
+          </span>
         </div>
 
         {/* Ingredients / Allergens (Small text) */}

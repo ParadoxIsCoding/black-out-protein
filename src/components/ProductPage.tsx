@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useCart } from './CartContext';
 import { productsData, type ProductSize } from '../data/products';
-import { getDisplayPrices, getEffectivePrice } from '../utils/saleLogic';
 import { Star, ChevronDown, ChevronUp, Plus, Minus } from 'lucide-react';
 
 import Header from './Header';
@@ -52,8 +51,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId }) => {
   }
 
   const pageContent = productPageData[product.id];
-  const { original, sale, isActive: isSaleActive } = getDisplayPrices(size);
-  const priceNumber = getEffectivePrice(original, size);
+  const originalPrice = size === '880g' ? 49.90 : 29.00;
 
   const handleAddToCart = () => {
     for (let i = 0; i < quantity; i++) {
@@ -61,7 +59,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId }) => {
         productId: product.id,
         name: product.name,
         size: size,
-        price: priceNumber,
+        price: originalPrice,
         image: size === '880g' ? product.image880g : product.image
       });
     }
@@ -111,7 +109,6 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId }) => {
                 <span key={idx} style={{ padding: '0.5rem 1rem', border: '1px solid var(--primary-color)', color: 'var(--primary-color)', borderRadius: '4px' }}>{badge}</span>
               ))}
               {pageContent.veganBadge && <span style={{ padding: '0.5rem 1rem', border: '1px solid #22c55e', color: '#22c55e', borderRadius: '4px' }}>Vegan</span>}
-              {isSaleActive && <span style={{ padding: '0.5rem 1rem', border: '1px solid #22c55e', color: '#22c55e', borderRadius: '4px', fontWeight: 'bold' }}>☘️ 15% OFF SALE ACTIVE</span>}
             </div>
 
             {/* Selectors */}
@@ -153,14 +150,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId }) => {
               className="font-bebas clip-btn clip-btn-yellow"
               style={{ width: '100%', fontSize: '1.5rem', padding: '1.2rem', marginBottom: '3rem' }}
             >
-              ADD TO CART - {isSaleActive ? (
-                <>
-                  <span style={{ color: '#000', opacity: 0.6, textDecoration: 'line-through', marginRight: '0.5rem' }}>${(original * quantity).toFixed(2)}</span>
-                  <span style={{ color: '#000', fontWeight: '800' }}>${(sale * quantity).toFixed(2)}</span>
-                </>
-              ) : (
-                `$${(original * quantity).toFixed(2)}`
-              )}
+              ADD TO CART - ${(originalPrice * quantity).toFixed(2)}
             </button>
 
             {/* Accordions */}

@@ -1,53 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { isStPatricksSaleActive, getSaleCountdown } from '../utils/saleLogic';
+import React, { useState } from 'react';
 
 const SaleBanner: React.FC = () => {
   const [isVisible, setIsVisible] = useState(() => {
-    const closed = sessionStorage.getItem('st_patricks_banner_closed');
+    const closed = sessionStorage.getItem('sale_banner_closed');
     return !closed;
   });
-  const [countdown, setCountdown] = useState(getSaleCountdown());
-  const [isActive, setIsActive] = useState(isStPatricksSaleActive());
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const currentCountdown = getSaleCountdown();
-      const currentActive = isStPatricksSaleActive();
-      
-      setCountdown(currentCountdown);
-      setIsActive(currentActive);
-      
-      if (currentCountdown.expired) {
-        clearInterval(timer);
-      }
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
 
   const handleClose = () => {
     setIsVisible(false);
-    sessionStorage.setItem('st_patricks_banner_closed', 'true');
+    sessionStorage.setItem('sale_banner_closed', 'true');
   };
 
-  if (!isActive || !isVisible) return null;
+  if (!isVisible) return null;
 
   return (
     <div className="sale-banner">
       <div className="sale-banner-content">
-        <div className="sale-banner-badge">☘️ ST PATRICK'S SALE</div>
         <div className="sale-banner-text">
-          <span className="sale-highlight">15% OFF ALL PRODUCTS</span> FOR A LIMITED TIME
-        </div>
-        <div className="sale-countdown">
-          <span className="countdown-label">ENDS IN:</span>
-          <div className="countdown-timer">
-            <span className="timer-unit">{String(countdown.hours).padStart(2, '0')}</span>h
-            <span className="timer-divider">:</span>
-            <span className="timer-unit">{String(countdown.minutes).padStart(2, '0')}</span>m
-            <span className="timer-divider">:</span>
-            <span className="timer-unit">{String(countdown.seconds).padStart(2, '0')}</span>s
-          </div>
+          <span className="underline-yellow">FREE</span> SHIPPING ON ORDERS OVER <span className="highlight">$70</span>
         </div>
         <button className="sale-banner-close" onClick={handleClose} aria-label="Close banner">
           ×
@@ -55,14 +25,13 @@ const SaleBanner: React.FC = () => {
       </div>
       <style>{`
         .sale-banner {
-          background: linear-gradient(90deg, #0a2e12 0%, #1a4a1a 50%, #0a2e12 100%);
+          background: #000;
           color: white;
-          padding: 12px 20px;
+          padding: 10px 20px;
           position: sticky;
           top: 0;
           z-index: 1000;
           font-family: 'Inter', sans-serif;
-          border-bottom: 2px solid #d4af37;
           box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         .sale-banner-content {
@@ -71,66 +40,29 @@ const SaleBanner: React.FC = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 24px;
           position: relative;
         }
-        .sale-banner-badge {
-          background: #d4af37;
-          color: #0a2e12;
-          padding: 4px 12px;
-          border-radius: 4px;
-          font-weight: 800;
-          font-size: 0.75rem;
-          letter-spacing: 0.05em;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
         .sale-banner-text {
-          font-weight: 500;
-          font-size: 0.95rem;
-          letter-spacing: 0.02em;
-        }
-        .sale-highlight {
-          color: #22c55e;
           font-weight: 800;
-        }
-        .sale-countdown {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          background: rgba(0,0,0,0.2);
-          padding: 6px 12px;
-          border-radius: 6px;
-          border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-        .countdown-label {
-          font-size: 0.7rem;
-          font-weight: 700;
-          opacity: 0.8;
-          color: #d4af37;
-        }
-        .countdown-timer {
-          font-family: 'Monaco', 'Consolas', monospace;
-          font-weight: 700;
-          font-size: 1rem;
-          display: flex;
-          align-items: center;
-        }
-        .timer-unit {
-          color: #fff;
-          min-width: 1.2em;
+          font-size: 0.9rem;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
           text-align: center;
         }
-        .timer-divider {
-          color: #d4af37;
-          margin: 0 2px;
-          animation: blink 1s infinite;
+        .sale-banner-text .highlight {
+          color: var(--primary-color);
         }
-        @keyframes blink {
-          50% { opacity: 0.3; }
+        .underline-yellow {
+          text-decoration: underline;
+          text-decoration-color: var(--primary-color);
+          text-underline-offset: 4px;
+          text-decoration-thickness: 2px;
         }
         .sale-banner-close {
           position: absolute;
-          right: -10px;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
           background: none;
           border: none;
           color: white;
@@ -138,27 +70,17 @@ const SaleBanner: React.FC = () => {
           cursor: pointer;
           opacity: 0.6;
           transition: opacity 0.2s;
-          padding: 0 10px;
+          padding: 0 5px;
           line-height: 1;
         }
         .sale-banner-close:hover {
           opacity: 1;
+          color: var(--primary-color);
         }
         @media (max-width: 768px) {
-          .sale-banner-content {
-            flex-direction: column;
-            gap: 8px;
-            text-align: center;
-          }
-          .sale-banner-close {
-            top: -5px;
-            right: -15px;
-          }
-          .sale-banner-badge {
-            font-size: 0.65rem;
-          }
           .sale-banner-text {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
+            padding-right: 20px;
           }
         }
       `}</style>

@@ -1,6 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { getEffectivePrice } from '../utils/saleLogic';
-
 import type { ReactNode } from 'react';
 
 export interface CartItem {
@@ -47,7 +45,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const id = `${newItem.productId}-${newItem.size}`;
     setItems(prev => {
       const existing = prev.find(item => item.id === id);
-      const effectivePrice = getEffectivePrice(newItem.price, newItem.size);
+      const effectivePrice = newItem.price;
       if (existing) {
         return prev.map(item => 
           item.id === id ? { ...item, quantity: item.quantity + 1, price: effectivePrice } : item

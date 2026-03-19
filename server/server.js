@@ -33,14 +33,14 @@ app.use((req, res, next) => {
 app.use(cors());
 
 const PRODUCT_PRICE_MAP = {
-  'strawberry-880g': 'price_1TBuefAzLUywsIqPk8XTuQWo',
-  'vanilla-880g': 'price_1TBueCAzLUywsIqPQjVSwZ7V',
-  'chocolate-880g': 'price_1TBufpAzLUywsIqPC1oEy6q7',
-  'salted-caramel-880g': 'price_1TBuitAzLUywsIqPhtIrNlRt',
-  'vanilla-440g': 'price_1TBudkAzLUywsIqPnTRiQMl6',
-  'chocolate-440g': 'price_1TBuhgAzLUywsIqPi2gfzAmO',
-  'strawberry-440g': 'price_1TBuexAzLUywsIqPjyMyyOAy',
-  'salted-caramel-440g': 'price_1TBuiQAzLUywsIqPSPSyVxjM',
+  'strawberry-880g': 'price_1T9jfRAzLUywsIqPdODMfBsJ',
+  'vanilla-880g': 'price_1T9jemAzLUywsIqPjOlJXfdX',
+  'chocolate-880g': 'price_1T9jJlAzLUywsIqPtM0NA79g',
+  'salted-caramel-880g': 'price_1T9jHnAzLUywsIqPCGZS6XgT',
+  'vanilla-440g': 'price_1TA7lZAzLUywsIqPvPH4UErF',
+  'chocolate-440g': 'price_1T9jEsAzLUywsIqPLdP5Ue1c',
+  'strawberry-440g': 'price_1T9jEOAzLUywsIqPpCeFJJVM',
+  'salted-caramel-440g': 'price_1T9j3HAzLUywsIqPYQGHJXSF',
 };
 
 // Your active Stripe shipping rate ID
